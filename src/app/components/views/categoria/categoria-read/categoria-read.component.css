@@ -17,3 +17,7 @@
 .table {
   width: 100%;
 }
+
+.mat-header-acoes {
+  width: 5rem;
+}
