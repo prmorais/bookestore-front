@@ -5,6 +5,7 @@
     <mat-label>NOME</mat-label>
     <label>
       <input
+        [(ngModel)]="categoria.nome"
         matInput
         type="text"
         name="nome"
@@ -16,6 +17,7 @@
     <mat-label>DESCRIÇÃO</mat-label>
     <label>
       <textarea
+        [(ngModel)]="categoria.descricao"
         matInput
         type="text"
         name="descricao"
@@ -26,10 +28,11 @@
 
   <div class="buttons">
     <button
+      (click)="create()"
       mat-stroked-button color="primary"
       class="mat-elevation-z8"
       style="margin-right: .5rem">
-      Novo
+      Salvar
     </button>
     <button
       mat-stroked-button color="accent"
