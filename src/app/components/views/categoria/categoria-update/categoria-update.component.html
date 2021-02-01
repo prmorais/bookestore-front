@@ -2,10 +2,10 @@
   <h4>Buscando dados...</h4>
 </ng-template>
 
-
 <ng-template #formulario>
+
   <form>
-    <h1>Remover Categoria</h1>
+    <h1>Atualizar Categoria</h1>
 
     <mat-form-field class="form">
       <mat-label>NOME</mat-label>
@@ -14,8 +14,7 @@
           [(ngModel)]="categoria.nome"
           matInput
           type="text"
-          name="nome"
-          disabled/>
+          name="nome"/>
       </label>
     </mat-form-field>
 
@@ -26,19 +25,18 @@
         [(ngModel)]="categoria.descricao"
         matInput
         type="text"
-        name="descricao"
-        disabled>
+        name="descricao">
       </textarea>
       </label>
     </mat-form-field>
 
     <div class="buttons">
       <button
-        (click)="remover()"
-        mat-stroked-button
+        (click)="update()"
+        mat-stroked-button color="primary"
         class="mat-elevation-z8"
-        style="margin-right: .5rem; color: crimson">
-        Remover
+        style="margin-right: .5rem">
+        Atualizar
       </button>
       <button
         (click)="cancel()"

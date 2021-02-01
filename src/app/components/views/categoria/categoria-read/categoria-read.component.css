@@ -11,7 +11,12 @@
 .title h1 {
   font-size: 2rem;
   font-weight: initial;
-  color: #7f7979;
+  color: #4c4ced;
+}
+
+h4 {
+  font-weight: initial;
+  color: #4c4ced;
 }
 
 .table {

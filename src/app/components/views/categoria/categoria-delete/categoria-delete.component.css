@@ -5,10 +5,15 @@ form {
 }
 
 h1 {
-  font-size: 2rem;
   font-weight: initial;
   margin-bottom: 3rem;
-  color: #7f7979;
+  color: crimson;
+}
+
+h4 {
+  font-weight: initial;
+  margin: 8rem 0 0 13rem;
+  color: crimson;
 }
 
 .form {
@@ -17,4 +22,10 @@ h1 {
 
 .buttons {
   text-align: start;
+}
+
+.ng-template {
+  text-align: center;
+  width: 70%;
+  margin: 2rem auto 0 auto;
 }

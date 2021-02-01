@@ -16,6 +16,8 @@ export class CategoriaDeleteComponent implements OnInit {
     descricao: ''
   }
 
+  load: boolean = false;
+
   constructor(private service: CategoriaService,
               private router: Router,
               private activateRouter: ActivatedRoute) { }
@@ -30,6 +32,7 @@ export class CategoriaDeleteComponent implements OnInit {
     this.service.findCategoriaById(this.categoria.id)
       .subscribe(data => {
         this.categoria = data;
+        this.load = true;
       })
   }
 
@@ -37,7 +40,7 @@ export class CategoriaDeleteComponent implements OnInit {
     this.categoria.id &&
       this.service.delete(this.categoria.id)
         .subscribe(() => {
-          this.service.message(`Categoria ${this.categoria.nome} removida com sucesso!`)
+          this.service.message(`Categoria "${this.categoria.nome.toUpperCase()}" removida com sucesso!`)
           this.cancel();
         }, err => {
           this.service.message(err.error.error);
@@ -47,9 +50,4 @@ export class CategoriaDeleteComponent implements OnInit {
   cancel(): void {
     this.router.navigate(['categorias']);
   }
-
-  delete() {
-
-  }
-
 }
