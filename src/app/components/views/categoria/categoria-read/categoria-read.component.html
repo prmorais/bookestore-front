@@ -5,7 +5,7 @@
   </div>
 
   <ng-template [ngIf]="!load" [ngIfElse]="tabela">
-    <h4>Buscando dados...</h4>
+    <h4>Buscando categorias...</h4>
   </ng-template>
 
   <ng-template #tabela >
@@ -41,7 +41,7 @@
       <ng-container matColumnDef="livros">
         <th mat-header-cell *matHeaderCellDef> LIVROS </th>
         <td mat-cell *matCellDef="let row">
-          <a href="#" style="margin-left: .5rem">
+          <a routerLink="{{row.id}}/livros" style="margin-left: .5rem">
             <i style="color: #f4723e" class="material-icons">book</i>
           </a>
         </td>
