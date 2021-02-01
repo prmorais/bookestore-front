@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from "./components/views/home/home.component";
 import {CategoriaReadComponent} from "./components/views/categoria/categoria-read/categoria-read.component";
 import {CategoriaCreateComponent} from "./components/views/categoria/categoria-create/categoria-create.component";
+import {CategoriaDeleteComponent} from "./components/views/categoria/categoria-delete/categoria-delete.component";
 
 const routes: Routes = [
   {
@@ -15,8 +16,12 @@ const routes: Routes = [
     component: CategoriaReadComponent
   },
   {
-    path: 'categoria/create',
+    path: 'categorias/create',
     component: CategoriaCreateComponent
+  },
+  {
+    path: 'categorias/delete/:id',
+    component: CategoriaDeleteComponent
   }
 ];
 

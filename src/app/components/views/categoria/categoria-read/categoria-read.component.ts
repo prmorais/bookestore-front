@@ -29,7 +29,7 @@ export class CategoriaReadComponent implements OnInit {
   }
 
   novaCategoria() {
-    this.router.navigate(['categoria/create']);
+    this.router.navigate(['categorias/create']);
   }
 
 }

@@ -10,16 +10,26 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class CategoriaService {
 
-  url = `${environment.baseUrl}/categorias`
+  baseUrl = `${environment.baseUrl}/categorias`
 
   constructor(private http: HttpClient, private snack: MatSnackBar) { }
 
   findAllCategorias(): Observable<CategoriaModel[]> {
-    return this.http.get<CategoriaModel[]>(this.url)
+    return this.http.get<CategoriaModel[]>(this.baseUrl)
+  }
+
+  findCategoriaById(id: String): Observable<CategoriaModel> {
+    const url = `${this.baseUrl}/${id}`
+    return this.http.get<CategoriaModel>(url);
   }
 
   create(categoria: CategoriaModel): Observable<CategoriaModel> {
-    return this.http.post<CategoriaModel>(this.url, categoria);
+    return this.http.post<CategoriaModel>(this.baseUrl, categoria);
+  }
+
+  delete(id: String): Observable<void> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<void>(url);
   }
 
   message(str: String): void {
