@@ -28,7 +28,8 @@ export class LivroCreateComponent implements OnInit {
     private service: LivroService,
     private route: Router,
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder) {
+  }
 
   ngOnInit(): void {
     this.id_cat = this.activatedRoute.snapshot.params.id_cat;
@@ -39,7 +40,7 @@ export class LivroCreateComponent implements OnInit {
     this.formulario = this.fb.group({
       titulo: [null, [Validators.required, Validators.minLength(5)]],
       nome_autor: [null, [Validators.required, Validators.minLength(5)]],
-      texto: [ null, [Validators.required, Validators.minLength(10)]],
+      texto: [null, [Validators.required, Validators.minLength(10)]],
     });
   }
 
@@ -50,7 +51,7 @@ export class LivroCreateComponent implements OnInit {
         this.service.message(`Livro ${this.livro.titulo.toUpperCase()} adicionado com sucesso`);
         this.cancel();
       }, err => {
-        for (let i = 0; i < err.error.errors.length; i++){
+        for (let i = 0; i < err.error.errors.length; i++) {
           this.service.message(err.error.errors[i].message);
         }
       });
@@ -64,33 +65,42 @@ export class LivroCreateComponent implements OnInit {
     return !this.formulario.controls[campo].valid && this.formulario.controls[campo].touched;
   };
 
+  errorRequired(campo: string) {
+    switch (campo) {
+      case 'nome_autor':
+        return 'Nome do autor é obrigatório!';
+      default:
+        return `${campo.charAt(0).toUpperCase()}${campo.slice(1)} é obrigatório!`;
+    }
+  }
+
+  errorMinLength(campo: string) {
+    switch (campo) {
+      case 'nome_autor':
+        return `Nome do autor é deve ter no mínimo 5 caracteres!`;
+      case 'texto':
+        return `${campo.charAt(0).toUpperCase()}${campo.slice( 1)} deve ter ter no mínimo 10 caracteres!`;
+      default:
+        return `${campo.charAt(0).toUpperCase()}${campo.slice( 1)} deve ter ter no mínimo 5 caracteres!`;
+    }
+  }
+
   getMessage(campo: string): string {
 
     let campoVerifica = this.formulario.controls[campo];
-    // campoVerifica.errors && Object.keys(campoVerifica.errors).map(campo => {
-    //   console.log('Erro no campo ' + campo)
-    // })
+    let msg: string = '';
 
-    if (campoVerifica.errors) {
-      if (campoVerifica.errors['required'] &&
-          campoVerifica.touched
-      ) {
-        return `${campo} é requerido!`;
-      }
+    if (campoVerifica.touched) {
+      campoVerifica.errors &&
+      Object.keys(campoVerifica.errors).map(error => {
+        if (error === 'required'){
+          msg = this.errorRequired(campo);
+        }
 
-      if (campoVerifica.errors['minlength'] &&
-          campo === 'texto' &&
-          campoVerifica.touched
-      ) {
-        return `${campo} deve ter no mínimo 10 caracteres!`;
-      }
-
-      if (campoVerifica.errors['minlength'] &&
-          campoVerifica.touched
-      ) {
-        return `${campo} deve ter no mínimo 5 caracteres!`;
-      }
+        if (error === 'minlength')
+        msg = this.errorMinLength(campo);
+      });
     }
-    return '';
-  };
+    return msg;
+  }
 }
