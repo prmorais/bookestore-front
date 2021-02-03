@@ -1,4 +1,3 @@
-<!--suppress ALL -->
 <div class="content">
   <div class="title">
     <h1>Livros por categoria</h1>
@@ -29,20 +28,20 @@
         <!-- ID Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>ID</th>
-          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          <td mat-cell *matCellDef="let row">{{row.id}}</td>
         </ng-container>
 
         <!-- TÍTULO Column -->
         <ng-container matColumnDef="titulo">
           <th mat-header-cell *matHeaderCellDef>TÍTULO</th>
-          <td mat-cell *matCellDef="let row"> {{row.titulo}} </td>
+          <td mat-cell *matCellDef="let row">{{row.titulo}}</td>
         </ng-container>
 
-<!--        &lt;!&ndash; NOME DO AUTOR Column &ndash;&gt;-->
-<!--        <ng-container matColumnDef="nome_autor">-->
-<!--          <th mat-header-cell *matHeaderCellDef> NOME DO AUTOR</th>-->
-<!--          <td mat-cell *matCellDef="let row"> {{row.nome_autor}} </td>-->
-<!--        </ng-container>-->
+        <!-- NOME DO AUTOR Column -->
+        <ng-container matColumnDef="nome_autor">
+          <th mat-header-cell *matHeaderCellDef>NOME DO AUTOR</th>
+          <td mat-cell *matCellDef="let row">{{row.nome_autor}}</td>
+        </ng-container>
 
         <!-- LIVROS Column -->
         <ng-container matColumnDef="livros">
@@ -58,10 +57,10 @@
         <ng-container matColumnDef="acoes">
           <th class="mat-header-acoes" mat-header-cell *matHeaderCellDef>AÇÕES</th>
           <td mat-cell *matCellDef="let row">
-            <a routerLink="update/{{row.id}}" style="color: #4c4ced">
+            <a routerLink="{{row.id}}/update" style="color: #4c4ced">
               <i class="material-icons">edit</i>
             </a>
-            <a routerLink="delete/{{row.id}}" style="margin-left: 1rem; color: #dc143c">
+            <a routerLink="{{row.id}}/delete" style="margin-left: 1rem; color: #dc143c">
               <i class="material-icons">delete</i>
             </a>
           </td>

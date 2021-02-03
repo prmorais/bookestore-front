@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {LivroModel} from "../livro.model";
-import {CategoriaService} from "../../categoria/categoria.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LivroService} from "../livro.service";
 
@@ -14,7 +13,7 @@ export class LivroReadAllComponent implements OnInit {
   id_cat: String = '';
   load: boolean = false;
   livros: LivroModel[] = [];
-  displayedColumns: string[] = ['id', 'titulo', 'livros', 'acoes'];
+  displayedColumns: string[] = ['id', 'titulo', 'nome_autor', 'livros', 'acoes'];
 
   constructor(
     private service: LivroService,

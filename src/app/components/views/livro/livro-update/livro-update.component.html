@@ -1,0 +1,66 @@
+<ng-template [ngIf]="!load" [ngIfElse]="frmUpdate">
+  <h4>Buscando dados...</h4>
+</ng-template>
+
+<ng-template #frmUpdate>
+  <form [formGroup]="formulario">
+    <h1>Atualizando Livro</h1>
+
+    <mat-form-field class="form">
+      <mat-label>TÍTULO</mat-label>
+      <label>
+        <input
+          formControlName="titulo"
+          matInput
+          type="text"
+          maxlength="100"
+          placeholder="Ex: React com Redux"/>
+      </label>
+      <mat-error *ngIf="verificaValidTouched('titulo')">{{getMessage('titulo')}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form">
+      <mat-label>NOME DO AUTOR</mat-label>
+      <label>
+        <input
+          formControlName="nome_autor"
+          matInput
+          type="text"
+          maxlength="100"
+          placeholder="Ex: Paulo Roberto"/>
+      </label>
+      <mat-error *ngIf="verificaValidTouched('nome_autor')">{{getMessage('nome_autor')}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form">
+      <mat-label>TEXTO</mat-label>
+      <label>
+      <textarea
+        formControlName="texto"
+        matInput
+        type="text"
+        maxlength="2000000"
+        placeholder="Resumo do conteúdo do livro">
+      </textarea>
+      </label>
+      <mat-error *ngIf="verificaValidTouched('texto')">{{getMessage('texto')}}</mat-error>
+    </mat-form-field>
+
+    <div class="buttons">
+      <button
+        (click)="update()"
+        mat-stroked-button
+        class="mat-elevation-z8"
+        [disabled]="formulario.invalid"
+        style="margin-right: .5rem; color: darkgreen">
+        Atualizar
+      </button>
+      <button
+        (click)="cancel()"
+        mat-stroked-button color="accent"
+        class="mat-elevation-z8">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</ng-template>

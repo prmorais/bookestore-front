@@ -18,7 +18,7 @@ export class CategoriaService {
     return this.http.get<CategoriaModel[]>(this.baseUrl)
   };
 
-  findCategoriaById(id: String): Observable<CategoriaModel> {
+  findCategoriaById(id: string): Observable<CategoriaModel> {
     const url = `${this.baseUrl}/${id}`
     return this.http.get<CategoriaModel>(url);
   };
@@ -32,12 +32,12 @@ export class CategoriaService {
     return this.http.put<CategoriaModel>(url, categoria);
   };
 
-  delete(id: String): Observable<void> {
+  delete(id: string): Observable<void> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete<void>(url);
   };
 
-  message(str: String): void {
+  message(str: string): void {
     this.snack.open(`${str}`, 'OK', {
       horizontalPosition: "end",
       verticalPosition: "top",

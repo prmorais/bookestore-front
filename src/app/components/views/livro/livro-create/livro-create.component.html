@@ -1,5 +1,5 @@
 <form [formGroup]="formulario">
-  <h1>Novo Livro</h1>
+  <h1>Adicionando Livro</h1>
 
   <mat-form-field class="form">
     <mat-label>TÍTULO</mat-label>
@@ -48,7 +48,7 @@
       class="mat-elevation-z8"
       [disabled]="formulario.invalid"
       style="margin-right: .5rem; color: darkgreen">
-      Salvar
+      Adicionar
     </button>
     <button
       (click)="cancel()"

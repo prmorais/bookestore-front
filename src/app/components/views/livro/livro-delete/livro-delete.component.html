@@ -1,40 +1,48 @@
-<ng-template [ngIf]="!load" [ngIfElse]="formulario">
+<ng-template [ngIf]="!load" [ngIfElse]="frmDelete">
   <h4>Buscando dados...</h4>
 </ng-template>
 
-
-<ng-template #formulario>
-  <form>
-    <h1>Removendo Categoria</h1>
+<ng-template #frmDelete>
+  <form [formGroup]="formulario">
+    <h1>Removendo Livro</h1>
 
     <mat-form-field class="form">
-      <mat-label>NOME</mat-label>
+      <mat-label>TÍTULO</mat-label>
       <label>
         <input
-          [(ngModel)]="categoria.nome"
+          formControlName="titulo"
           matInput
           type="text"
-          name="nome"
-          disabled/>
+          maxlength="100"/>
       </label>
     </mat-form-field>
 
     <mat-form-field class="form">
-      <mat-label>DESCRIÇÃO</mat-label>
+      <mat-label>NOME DO AUTOR</mat-label>
+      <label>
+        <input
+          formControlName="nome_autor"
+          matInput
+          type="text"
+          maxlength="100"/>
+      </label>
+    </mat-form-field>
+
+    <mat-form-field class="form">
+      <mat-label>TEXTO</mat-label>
       <label>
       <textarea
-        [(ngModel)]="categoria.descricao"
+        formControlName="texto"
         matInput
         type="text"
-        name="descricao"
-        disabled>
+        maxlength="2000000">
       </textarea>
       </label>
     </mat-form-field>
 
     <div class="buttons">
       <button
-        (click)="remover()"
+        (click)="delete()"
         mat-stroked-button
         class="mat-elevation-z8"
         style="margin-right: .5rem; color: crimson">
@@ -49,3 +57,4 @@
     </div>
   </form>
 </ng-template>
+
