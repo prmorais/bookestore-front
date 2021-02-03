@@ -18,7 +18,8 @@ export class LivroReadAllComponent implements OnInit {
 
   constructor(
     private service: LivroService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private route: Router) { }
 
   ngOnInit(): void {
 
@@ -34,4 +35,8 @@ export class LivroReadAllComponent implements OnInit {
         this.load = true;
       }, error => console.log(error));
   };
+
+  adicionarLivro(): void {
+    this.route.navigate([`categorias/${this.id_cat}/livros/create`]);
+  }
 }

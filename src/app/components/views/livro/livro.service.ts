@@ -22,6 +22,11 @@ export class LivroService {
     return this.http.get<LivroModel[]>(url);
   };
 
+  create(id_cat: string, livro: LivroModel): Observable<LivroModel>{
+    const url = `${this.baseUrl}?categoria=${id_cat}`;
+    return this.http.post<LivroModel>(url,livro);
+  }
+
   message(str: String): void {
     this.snack.open(`${str}`, 'OK', {
       horizontalPosition: "end",
