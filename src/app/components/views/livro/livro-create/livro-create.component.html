@@ -18,13 +18,13 @@
     <mat-label>NOME DO AUTOR</mat-label>
     <label>
       <input
-        formControlName="autor"
+        formControlName="nome_autor"
         matInput
         type="text"
         maxlength="100"
         placeholder="Ex: Paulo Roberto"/>
     </label>
-    <mat-error *ngIf="verificaValidTouched('autor')">{{getMessage('autor')}}</mat-error>
+    <mat-error *ngIf="verificaValidTouched('nome_autor')">{{getMessage('nome_autor')}}</mat-error>
   </mat-form-field>
 
   <mat-form-field class="form">

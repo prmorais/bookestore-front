@@ -24,12 +24,6 @@ export class LivroCreateComponent implements OnInit {
   id_cat: string = '';
   formulario: FormGroup = new FormGroup({});
 
-  // formulario: FormGroup = new FormGroup({
-  //   titulo: new FormControl('', [Validators.minLength(5)]),
-  //   nome_autor: new FormControl('', [Validators.minLength(5)]),
-  //   texto: new FormControl('', [Validators.minLength(10)]),
-  // });
-
   constructor(
     private service: LivroService,
     private route: Router,
@@ -44,7 +38,7 @@ export class LivroCreateComponent implements OnInit {
   criarFormulario() {
     this.formulario = this.fb.group({
       titulo: [null, [Validators.required, Validators.minLength(5)]],
-      autor: [null, [Validators.required, Validators.minLength(5)]],
+      nome_autor: [null, [Validators.required, Validators.minLength(5)]],
       texto: [ null, [Validators.required, Validators.minLength(10)]],
     });
   }
